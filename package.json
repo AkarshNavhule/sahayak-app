@@ -14,11 +14,13 @@
     "@qdrant/js-client-rest": "^1.15.0",
     "bottleneck": "^2.19.5",
     "formidable": "^3.5.4",
+    "jspdf": "^3.0.1",
     "mammoth": "^1.9.1",
     "next": "15.4.1",
     "pdf-parse": "^1.1.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

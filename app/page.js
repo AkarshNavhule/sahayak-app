@@ -1,9 +1,11 @@
-import Image from "next/image";
+// pages/index.js
 
-export default function Home() {
+import Home from "./home";
+
+export default function Indexpage() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold ">Welcome to Sahayak App</h1>
-    </div>
+    <main className="min-h-screen bg-purple-50 flex items-center justify-center">
+      <Home />
+    </main>
   );
 }
