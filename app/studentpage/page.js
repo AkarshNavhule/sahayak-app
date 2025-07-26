@@ -4,10 +4,15 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import ChatWithTextbook from '../../components/ChatWithTextbook';
 import UploadAnswerSheet from '../../components/UploadAnswerSheet';
+import LeaderboardChat from '../../components/LeaderboardChat';
+import OverallPerformanceReport from '../../components/OverallPerformanceReport';
+
 
 export default function StudentPage() {
   const [showChatModal, setShowChatModal] = useState(false);
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [showLeaderboardChatModal, setShowLeaderboardChatModal] = useState(false);
+  const [showOverallReportModal, setShowOverallReportModal] = useState(false);
   const [username, setUsername] = useState('');
   const router = useRouter();
 
@@ -25,15 +30,30 @@ export default function StudentPage() {
     router.push('/');
   };
 
+  // const handleButtonClick = (action) => {
+  //   if (action === 'Chat with Textbook') {
+  //     setShowChatModal(true);
+  //   } else if (action === 'Upload Answer Sheet') {
+  //     setShowUploadModal(true);
+  //   } else {
+  //     console.log(`Navigating to ${action}`);
+  //   }
+  // };
+
   const handleButtonClick = (action) => {
     if (action === 'Chat with Textbook') {
       setShowChatModal(true);
     } else if (action === 'Upload Answer Sheet') {
       setShowUploadModal(true);
+    } else if (action === 'Leaderboard Chat') {
+      setShowLeaderboardChatModal(true);
+    } else if (action === 'Overall Performance') {
+      setShowOverallReportModal(true);
     } else {
       console.log(`Navigating to ${action}`);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -123,6 +143,44 @@ export default function StudentPage() {
                 className="w-full bg-orange-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors duration-200"
               >
                 View Rankings
+              </button>
+            </div>
+          </div>
+
+          {/* Leaderboard Chat Card */}
+          <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
+            <div className="p-6">
+              <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 10c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 18l1.395-3.72C3.512 13.042 3 11.574 3 10c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Leaderboard Chat</h3>
+              <p className="text-sm text-gray-600 mb-4">Ask about your marks, remarks, and insights.</p>
+              <button
+                onClick={() => handleButtonClick('Leaderboard Chat')}
+                className="w-full bg-pink-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-pink-700 transition-colors duration-200"
+              >
+                Start Chat
+              </button>
+            </div>
+          </div>
+
+          {/* Overall Performance Report Card */}
+          <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
+            <div className="p-6">
+              <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h4a2 2 0 012 2v1"/>
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Overall Performance</h3>
+              <p className="text-sm text-gray-600 mb-4">See your detailed report and ranking.</p>
+              <button
+                onClick={() => handleButtonClick('Overall Performance')}
+                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors duration-200"
+              >
+                View Report
               </button>
             </div>
           </div>
@@ -287,6 +345,20 @@ export default function StudentPage() {
       {/* Upload Modal */}
       {showUploadModal && (
         <UploadAnswerSheet onClose={() => setShowUploadModal(false)} />
+      )}
+
+      {showLeaderboardChatModal && (
+        <LeaderboardChat
+          username={username}
+          onClose={() => setShowLeaderboardChatModal(false)}
+        />
+      )}
+
+      {showOverallReportModal && (
+        <OverallPerformanceReport
+          username={username}
+          onClose={() => setShowOverallReportModal(false)}
+        />
       )}
     </div>
   );
