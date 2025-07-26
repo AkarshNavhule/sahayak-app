@@ -4,12 +4,17 @@ import React, { useState } from 'react';
 import UploadTextbook from '../../components/UploadTextbook';
 import ChatWithTextbook from '../../components/ChatWithTextbook'; 
 import CreateQuestionPaper from '../../components/CreateQuestionPaper';
+import PPTGeneration from '../../components/PPTGeneration';
+import AssessmentAnalysis from '../../components/AssessmentAnalysis';
+
 import { useRouter } from 'next/navigation';
 
 export default function TeacherPage() {
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [showChatModal, setShowChatModal] = useState(false); 
   const [showQuestionPaperModal, setShowQuestionPaperModal] = useState(false);
+  const [showPPTModal, setShowPPTModal] = useState(false);
+  const [showAnalysisModal, setShowAnalysisModal] = useState(false);
   const router = useRouter();
   
 
@@ -20,6 +25,10 @@ export default function TeacherPage() {
       setShowChatModal(true);
     } else if (action === 'Create Question Paper') {
       setShowQuestionPaperModal(true);
+    } else if (action === 'Generate PPT') {
+      setShowPPTModal(true);
+    } else if (action === 'Assessment Analysis') {
+      setShowAnalysisModal(true);
     } else {
       console.log(`Navigating to ${action}`);
     }
@@ -91,6 +100,44 @@ export default function TeacherPage() {
                 className="w-full bg-green-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200"
               >
                 Start Chat
+              </button>
+            </div>
+          </div>
+
+          {/* Generate PPT Card */}
+          <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300">
+            <div className="p-6">
+              <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 4H5m14-8H5m12 8V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2v-4" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Generate PPT</h3>
+              <p className="text-sm text-gray-600 mb-4">Instantly generate a presentation on a given topic</p>
+              <button
+                onClick={() => handleButtonClick('Generate PPT')}
+                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-indigo-700"
+              >
+                Create PPT
+              </button>
+            </div>
+          </div>
+
+          {/* Assessment Analysis Card */}
+          <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300">
+            <div className="p-6">
+              <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Assessment Analysis</h3>
+              <p className="text-sm text-gray-600 mb-4">Compare performance of strong and weak students</p>
+              <button
+                onClick={() => handleButtonClick('Assessment Analysis')}
+                className="w-full bg-pink-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-pink-700"
+              >
+                View Analysis
               </button>
             </div>
           </div>
@@ -195,6 +242,14 @@ export default function TeacherPage() {
 
       {showQuestionPaperModal && (
         <CreateQuestionPaper onClose={() => setShowQuestionPaperModal(false)} />
+      )}
+
+      {showPPTModal && (
+        <PPTGeneration onClose={() => setShowPPTModal(false)} />
+      )}
+
+      {showAnalysisModal && (
+        <AssessmentAnalysis onClose={() => setShowAnalysisModal(false)} />
       )}
     </div>
   );
