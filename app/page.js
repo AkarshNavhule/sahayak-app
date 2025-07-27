@@ -1,4 +1,3 @@
-// pages/index.js
 
 import Home from "./home";
 

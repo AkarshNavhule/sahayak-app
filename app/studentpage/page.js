@@ -6,7 +6,8 @@ import ChatWithTextbook from '../../components/ChatWithTextbook';
 import UploadAnswerSheet from '../../components/UploadAnswerSheet';
 import LeaderboardChat from '../../components/LeaderboardChat';
 import OverallPerformanceReport from '../../components/OverallPerformanceReport';
-
+import Leaderboard from '../../components/Leaderboard'; // New import
+import ChatWithLeaderboard from '../../components/ChatWithLeaderboard';
 
 export default function StudentPage() {
   const [showChatModal, setShowChatModal] = useState(false);
@@ -14,6 +15,10 @@ export default function StudentPage() {
   const [showLeaderboardChatModal, setShowLeaderboardChatModal] = useState(false);
   const [showOverallReportModal, setShowOverallReportModal] = useState(false);
   const [username, setUsername] = useState('');
+  const [showLeaderboardModal, setShowLeaderboardModal] = useState(false);
+  const [showChatWithLeaderboardModal, setShowChatWithLeaderboardModal] = useState(false);
+
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -127,8 +132,7 @@ export default function StudentPage() {
               </button>
             </div>
           </div>
-
-          {/* View Leaderboard Card */}
+          {/* View Leaderboard (full screen) */}
           <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
             <div className="p-6">
               <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-4">
@@ -137,37 +141,38 @@ export default function StudentPage() {
                 </svg>
               </div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">View Leaderboard</h3>
-              <p className="text-sm text-gray-600 mb-4">Check your ranking and compare with classmates</p>
+              <p className="text-sm text-gray-600 mb-4">See all student rankings and performance analytics.</p>
               <button
-                onClick={() => handleButtonClick('View Leaderboard')}
+                onClick={() => setShowLeaderboardModal(true)}
                 className="w-full bg-orange-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors duration-200"
               >
-                View Rankings
+                View Leaderboard
               </button>
             </div>
           </div>
 
-          {/* Leaderboard Chat Card */}
+          {/* Chat with Leaderboard */}
           <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
             <div className="p-6">
-              <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 10c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 18l1.395-3.72C3.512 13.042 3 11.574 3 10c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-1M5 8a2 2 0 002-2V4a2 2 0 012-2h6a2 2 0 012 2v2a2 2 0 002 2H5z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Leaderboard Chat</h3>
-              <p className="text-sm text-gray-600 mb-4">Ask about your marks, remarks, and insights.</p>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Chat with Leaderboard</h3>
+              <p className="text-sm text-gray-600 mb-4">Ask AI about your marks, ranks, and performance!</p>
               <button
-                onClick={() => handleButtonClick('Leaderboard Chat')}
-                className="w-full bg-pink-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-pink-700 transition-colors duration-200"
+                onClick={() => setShowChatWithLeaderboardModal(true)}
+                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-200"
               >
                 Start Chat
               </button>
             </div>
           </div>
 
+
           {/* Overall Performance Report Card */}
-          <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
+          {/* <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
             <div className="p-6">
               <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,10 +188,10 @@ export default function StudentPage() {
                 View Report
               </button>
             </div>
-          </div>
+          </div> */}
 
           {/* View Report Card */}
-          <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
+          {/* <div className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md">
             <div className="p-6">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,7 +207,7 @@ export default function StudentPage() {
                 View Details
               </button>
             </div>
-          </div>
+          </div> */}
 
         </div>
 
@@ -359,6 +364,14 @@ export default function StudentPage() {
           username={username}
           onClose={() => setShowOverallReportModal(false)}
         />
+      )}
+
+      {showLeaderboardModal && (
+        <Leaderboard onClose={() => setShowLeaderboardModal(false)} />
+      )}
+
+      {showChatWithLeaderboardModal && (
+        <ChatWithLeaderboard onClose={() => setShowChatWithLeaderboardModal(false)} />
       )}
     </div>
   );

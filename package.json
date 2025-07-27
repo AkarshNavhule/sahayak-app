@@ -12,6 +12,7 @@
     "@google/genai": "^1.10.0",
     "@google/generative-ai": "^0.24.1",
     "@qdrant/js-client-rest": "^1.15.0",
+    "@tanstack/react-table": "^8.21.3",
     "bottleneck": "^2.19.5",
     "formidable": "^3.5.4",
     "html2canvas": "^1.4.1",
@@ -22,7 +23,8 @@
     "pptxgenjs": "^4.0.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
