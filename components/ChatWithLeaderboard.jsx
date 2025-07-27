@@ -28,7 +28,7 @@ export default function ChatWithLeaderboard({ onClose }) {
     setInput('');
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:8000/chat_with_leaderboard', {
+      const res = await fetch('http://0.0.0.0:8000/chat_with_leaderboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt:question }),

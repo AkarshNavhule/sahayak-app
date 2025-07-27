@@ -37,7 +37,7 @@ export default function UploadAnswerSheet({ onClose }) {
   const fetchCollections = async () => {
     try {
       setIsLoadingCollections(true);
-      const response = await fetch('http://localhost:8000/list_chromadb_collections');
+      const response = await fetch('http://0.0.0.0:8000/list_chromadb_collections');
       
       if (response.ok) {
         const data = await response.json();
@@ -56,7 +56,7 @@ export default function UploadAnswerSheet({ onClose }) {
   const fetchQuestionPapers = async () => {
     try {
       setIsLoadingQuestionPapers(true);
-      const response = await fetch('http://localhost:8000/list_questionpapers');
+      const response = await fetch('http://0.0.0.0:8000/list_questionpapers');
       
       if (response.ok) {
         const data = await response.json();
@@ -113,7 +113,7 @@ export default function UploadAnswerSheet({ onClose }) {
       formData.append('chromadbcollectionname', selectedCollection);
       formData.append('correctiontype', correctionType);
 
-      const response = await fetch('http://localhost:8000/correct_answersheet', {
+      const response = await fetch('http://0.0.0.0:8000/correct_answersheet', {
         method: 'POST',
         body: formData,
       });

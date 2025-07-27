@@ -58,7 +58,7 @@ export default function ChatWithTextbook({ onClose }) {
   const fetchCollections = async () => {
     try {
       setIsLoadingCollections(true);
-      const response = await fetch('http://localhost:8000/list_chromadb_collections');
+      const response = await fetch('http://0.0.0.0:8000/list_chromadb_collections');
       
       if (response.ok) {
         const data = await response.json();
@@ -156,7 +156,7 @@ export default function ChatWithTextbook({ onClose }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8000/chat_with_textbook', {
+      const response = await fetch('http://0.0.0.0:8000/chat_with_textbook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

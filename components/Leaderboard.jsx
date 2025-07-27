@@ -23,7 +23,7 @@ export default function Leaderboard({ onClose }) {
   const fetchLeaderboardData = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:8000/leaderboard');
+      const response = await fetch('http://0.0.0.0:8000/leaderboard');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

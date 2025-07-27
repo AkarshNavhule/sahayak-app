@@ -42,7 +42,7 @@ const handleUpload = async () => {
 
     console.log('Starting upload...', selectedFile.name);
 
-    const response = await fetch('http://localhost:8000/upload_pdf', {
+    const response = await fetch('http://0.0.0.0:8000/upload_pdf', {
       method: 'POST',
       body: formData,
     });

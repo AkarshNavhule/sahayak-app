@@ -59,7 +59,7 @@ export default function TakeAttendance({ onClose }) {
       const formData = new FormData();
       formData.append('targetimage', imageFile);
 
-      const res = await fetch('http://localhost:8000/attendance', {
+      const res = await fetch('http://0.0.0.0:8000/attendance', {
         method: 'POST',
         body: formData,
       });

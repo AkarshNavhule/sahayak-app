@@ -22,7 +22,7 @@ export default function CreateQuestionPaper({ onClose }) {
   const fetchCollections = async () => {
     try {
       setIsLoadingCollections(true);
-      const response = await fetch('http://localhost:8000/list_chromadb_collections');
+      const response = await fetch('http://0.0.0.0:8000/list_chromadb_collections');
       
       if (response.ok) {
         const data = await response.json();
@@ -48,7 +48,7 @@ export default function CreateQuestionPaper({ onClose }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8000/generate_question_paper', {
+      const response = await fetch('http://0.0.0.0:8000/generate_question_paper', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

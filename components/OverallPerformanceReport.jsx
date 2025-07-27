@@ -10,7 +10,7 @@ export default function OverallPerformanceReport({ onClose, username }) {
   useEffect(() => {
     async function fetchReport() {
       try {
-        const res = await fetch(`http://localhost:8000/student_report?username=${encodeURIComponent(username)}`);
+        const res = await fetch(`http://0.0.0.0:8000/student_report?username=${encodeURIComponent(username)}`);
         if (res.ok) {
           const data = await res.json();
           setReport(data);

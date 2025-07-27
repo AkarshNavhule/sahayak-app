@@ -26,7 +26,7 @@ export default function LeaderboardChat({ onClose, username }) {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:8000/leaderboard_chat', {
+      const res = await fetch('http://0.0.0.0:8000/leaderboard_chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, prompt: userMessage.content })

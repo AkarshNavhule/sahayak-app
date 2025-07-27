@@ -16,7 +16,7 @@ export default function AssessmentAnalysis({ onClose }) {
     setError('');
     setResult(null);
     try {
-      const res = await fetch('http://localhost:8000/assessment_analysis', {
+      const res = await fetch('http://0.0.0.0:8000/assessment_analysis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ collection }),
